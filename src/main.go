@@ -13,9 +13,11 @@ import (
 func main() {
 	ctx := context.Background()
 
+	casbinHost := os.Getenv("CASBIN_HOST")
+
 	client, err := casbin.NewClient(
 		ctx,
-		"localhost:50051",
+		casbinHost,
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 	)
 	if err != nil {
